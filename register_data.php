@@ -3,160 +3,190 @@
 require_once 'connect.inc.php';
 require_once 'core.inc.php';
 
-if(!logged()){
+//if(!logged()){
     if(isset($_POST['First_Name'])          && isset($_POST['Middle_Name'])      && isset($_POST['Last_Name'])
 
-        && isset($_POST['Image'])           && isset($_POST['Sex'])              && isset($_POST['Dob'])
+    && isset($_POST['Image_Chosen'])    && isset($_POST['Sex'])              && isset($_POST['Dob'])
 
-        && isset($_POST['Personal_Contact'])&& isset($_POST['Father_Name'])      && isset($_POST['Mother_Name'])
+    && isset($_POST['Personal_Contact'])&& isset($_POST['Father_Name'])      && isset($_POST['Mother_Name'])
 
-        && isset($_POST['Father_Contact'])  && isset($_POST['Mother_Contact'])   && isset($_POST['Branch'])
+    && isset($_POST['Father_Contact'])  && isset($_POST['Mother_Contact'])   && isset($_POST['Branch'])
 
-        && isset($_POST['Stream'])          && isset($_POST['10th_Board'])       && isset($_POST['12th_Board'])
+    && isset($_POST['Stream'])          && isset($_POST['10th_Board'])       && isset($_POST['12th_Board'])
 
-        && isset($_POST['10th_School'])     && isset($_POST['12th_School'])      && isset($_POST['10th_Percent'])
+    && isset($_POST['10th_School'])     && isset($_POST['12th_School'])      && isset($_POST['10th_Percent'])
 
-        && isset($_POST['12th_Percent'])    && isset($_POST['Username'])            && isset($_POST['Password'])
+    && isset($_POST['12th_Percent'])    && isset($_POST['Username'])            && isset($_POST['Password'])
 
-        && isset($_POST['Confirm_Password'])&& isset($_POST['Cur_Address'])      && isset($_POST['Cur_Area_Colony'])
+    && isset($_POST['Confirm_Password'])&& isset($_POST['Cur_Address'])      && isset($_POST['Cur_Area_Colony'])
 
-        && isset($_POST['Cur_City'])        && isset($_POST['Cur_State'])        && isset($_POST['Cur_Zip'])
+    && isset($_POST['Cur_City'])        && isset($_POST['Cur_State'])        && isset($_POST['Cur_Zip'])
 
-        && isset($_POST['Same_As_Cur_Address']))    {
+    && isset($_POST['Same_As_Cur_Address'])  && isset($_POST['Submit']))    {
 
-        $First_Name = $_POST['First_Name'];
+        echo 'same as current address';
 
-        $Middle_Name = $_POST['Middle_Name'];
+    $First_Name = $_POST['First_Name'];
 
-        $Last_Name = $_POST['Last_Name'];
+    $Middle_Name = $_POST['Middle_Name'];
 
-        $Image = $_POST['Image'];
+    $Last_Name = $_POST['Last_Name'];
 
-        $Sex = $_POST['Sex'];
+    $Image_Chosen = $_POST['Image_Chosen'];
 
-        $Dob = $_POST['Dob'];
+    $Sex = $_POST['Sex'];
 
-        $Personal_Contact = $_POST['Personal_Contact'];
+    $Dob = $_POST['Dob'];
 
-        $Father_Name = $_POST['Father_Name'];
+    $Personal_Contact = $_POST['Personal_Contact'];
 
-        $Mother_Name = $_POST['Mother_Name'];
+    $Father_Name = $_POST['Father_Name'];
 
-        $Father_Contact = $_POST['Father_Contact'];
+    $Mother_Name = $_POST['Mother_Name'];
 
-        $Mother_Contact = $_POST['Mother_Contact'];
+    $Father_Contact = $_POST['Father_Contact'];
 
-        $Branch = $_POST['Branch'];
+    $Mother_Contact = $_POST['Mother_Contact'];
 
-        $Stream = $_POST['Stream'];
+    $Branch = $_POST['Branch'];
 
-        $_10th_Board = $_POST['10th_Board'];
+    $Stream = $_POST['Stream'];
 
-        $_12th_Board = $_POST['12th_Board'];
+    $_10th_Board = $_POST['10th_Board'];
 
-        $_10th_School = $_POST['10th_School'];
+    $_12th_Board = $_POST['12th_Board'];
 
-        $_12th_School = $_POST['12th_School'];
+    $_10th_School = $_POST['10th_School'];
 
-        $_10th_Percent = $_POST['10th_Percent'];
+    $_12th_School = $_POST['12th_School'];
 
-        $_12th_Percent = $_POST['12th_Percent'];
+    $_10th_Percent = $_POST['10th_Percent'];
 
-        $Username = $_POST['Username'];
+    $_12th_Percent = $_POST['12th_Percent'];
 
-        $Password = $_POST['Password'];
+    $Username = $_POST['Username'];
 
-        $Confirm_Password = $_POST['Confirm_Password'];
-        $Confirm_Password_Hash= NULL;
+    $Password = $_POST['Password'];
 
-        $Cur_Address = $_POST['Cur_Address'];
+    $Confirm_Password = $_POST['Confirm_Password'];
+    $Confirm_Password_Hash= NULL;
 
-        $Cur_Area_Colony = $_POST['Cur_Area_Colony'];
+    $Cur_Address = $_POST['Cur_Address'];
 
-        $Cur_City = $_POST['Cur_City'];
+    $Cur_Area_Colony = $_POST['Cur_Area_Colony'];
 
-        $Cur_State = $_POST['Cur_State'];
+    $Cur_City = $_POST['Cur_City'];
 
-        $Cur_Zip = $_POST['Cur_Zip'];
+    $Cur_State = $_POST['Cur_State'];
 
-        $Submit = $_POST['Submit'];
+    $Cur_Zip = $_POST['Cur_Zip'];
 
-        $Same_As_Cur_Address = $_POST['Same_As_Cur_Address'];
 
-        if(!empty($First_Name)         && !empty($Middle_Name)      && !empty($Last_Name)        && !empty($Image)
+    $Same_As_Cur_Address = $_POST['Same_As_Cur_Address'];
 
-            && !empty($Sex)            && !empty($Dob)              && !empty($Personal_Contact) && !empty($Father_Name)
+    if( !empty($First_Name)         && !empty($Middle_Name)      && !empty($Last_Name)        && !empty($Image_Chosen)
 
-            && !empty($Mother_Name)    && !empty($Father_Contact)   && !empty($Mother_Contact)   && !empty($Branch)
+        && !empty($Sex)            && !empty($Dob)              && !empty($Personal_Contact) && !empty($Father_Name)
 
-            && !empty($Stream)         && !empty($_10th_Board)      && !empty($_12th_Board)      && !empty($_10th_School)
+        && !empty($Mother_Name)    && !empty($Father_Contact)   && !empty($Mother_Contact)   && !empty($Branch)
 
-            && !empty($_12th_School)   && !empty($_10th_Percent)    && !empty($_12th_Percent)    && !empty($Username)
+        && !empty($Stream)         && !empty($_10th_Board)      && !empty($_12th_Board)      && !empty($_10th_School)
 
-            && !empty($Password)       && !empty($Confirm_Password) && !empty($Cur_Address)      && !empty($Cur_Area_Colony)
+        && !empty($_12th_School)   && !empty($_10th_Percent)    && !empty($_12th_Percent)    && !empty($Username)
 
-            && !empty($Cur_City)       && !empty($Cur_State)        && !empty($Cur_Zip)          && !empty($Submit))    {
+        && !empty($Password)       && !empty($Confirm_Password) && !empty($Cur_Address)      && !empty($Cur_Area_Colony)
 
-            if($Password != $Confirm_Password){
-                echo 'Passwords do not match';
-            }
-            else{
-                $Confirm_Password_Hash = md5($Confirm_Password);
+        && !empty($Cur_City)       && !empty($Cur_State)        && !empty($Cur_Zip)) {
 
-                $query = "SELECT username FROM student_data WHERE username='".$Username."'";
+        echo 'curr not empttyyyyyy';
 
-                if($query_run = mysqli_query($conn,$query)){
+        if ($Password != $Confirm_Password) {
+            echo 'curr Passwords do not match';
+        } else {
 
-                    $query_rows = mysqli_num_rows($query_run);
+            echo 'curr passwords matcheddd';
 
-                    if($query_rows >= 1){
-                        echo 'Username'.$Username.'already exists.';
+            $Confirm_Password_Hash = md5($Confirm_Password);
+
+            $query = "SELECT username FROM student_data WHERE username='" . $Username . "'";
+
+            if ($query_run = mysqli_query($conn, $query)) {
+
+                echo 'curr username exists name further';
+
+                $query_rows = mysqli_num_rows($query_run);
+
+                if ($query_rows >= 1) {
+                    echo 'Username' . $Username . 'already exists.';
+                } else {
+
+                    echo 'curr data insertion here';
+
+                    $query = "INSERT INTO student_data VALUES ('','" . mysqli_real_escape_string($conn, $First_Name) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $Middle_Name) . "','" . mysqli_real_escape_string($conn, $Last_Name) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $Image_Chosen) . "','" . mysqli_real_escape_string($conn, $Sex) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $Dob) . "','" . mysqli_real_escape_string($conn, $Personal_Contact) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $Father_Name) . "','" . mysqli_real_escape_string($conn, $Mother_Name) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $Father_Contact) . "','" . mysqli_real_escape_string($conn, $Mother_Contact) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $Branch) . "','" . mysqli_real_escape_string($conn, $Stream) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $_10th_Board) . "','" . mysqli_real_escape_string($conn, $_12th_Board) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $_10th_School) . "','" . mysqli_real_escape_string($conn, $_12th_School) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $_10th_Percent) . "','" . mysqli_real_escape_string($conn, $_12th_Percent) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $Username) . "','" . mysqli_real_escape_string($conn, $Confirm_Password_Hash) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $Cur_Address) . "','" . mysqli_real_escape_string($conn, $Cur_Area_Colony) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $Cur_City) . "','" . mysqli_real_escape_string($conn, $Cur_State) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $Cur_Zip) . "','" . mysqli_real_escape_string($conn, $Cur_Address) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $Cur_Area_Colony) . "','" . mysqli_real_escape_string($conn, $Cur_City) . "'
+                        
+                        ,'" . mysqli_real_escape_string($conn, $Cur_State) . "','" . mysqli_real_escape_string($conn, $Cur_Zip) . "')";
+
+                        echo $query;
+
+                        global $conn;
+
+                    if ($query_run = mysqli_query($conn, $query)) {
+
+                        echo 'curr query running';
+
+                        header('Location :view_status.php');
+
+                        echo 'Data inserted';
+
+                    } else {
+
+                        echo 'We couldn\'t register at the moment.Please try again later.';
+
                     }
-                    else{
-                        $query = "INSERT INTO student_details VALUES (''      ,'".mysqli_real_escape_string($conn,$First_Name)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$Middle_Name)."'    ,'".mysqli_real_escape_string($conn,$Last_Name)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$Image)."','".mysqli_real_escape_string($conn,$Sex)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$Dob)."','".mysqli_real_escape_string($conn,$Personal_Contact)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$Father_Name)."','".mysqli_real_escape_string($conn,$Mother_Name)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$Father_Contact)."','".mysqli_real_escape_string($conn,$Mother_Contact)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$Branch)."','".mysqli_real_escape_string($conn,$Stream)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$_10th_Board)."','".mysqli_real_escape_string($conn,$_12th_Board)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$_10th_School)."','".mysqli_real_escape_string($conn,$_12th_School)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$_10th_Percent)."','".mysqli_real_escape_string($conn,$_12th_Percent)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$Username)."','".mysqli_real_escape_string($conn,$Confirm_Password_Hash)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$Cur_Address)."','".mysqli_real_escape_string($conn,$Cur_Area_Colony)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$Cur_City)."','".mysqli_real_escape_string($conn,$Cur_State)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$Cur_Zip)."','".mysqli_real_escape_string($conn,$Cur_Address)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$Cur_Area_Colony)."','".mysqli_real_escape_string($conn,$Cur_City)."'
-                        
-                        ,'".mysqli_real_escape_string($conn,$Cur_State)."','".mysqli_real_escape_string($conn,$Cur_Zip)."')";
 
-                        
+                }       //else over
 
-                    }       //else over
-
-                }      //if over
-
+            } else {
+                echo 'query not able to run';
             }
 
-        }else echo 'Something is empty.';
-    }elseif (isset($_POST['First_Name'])          && isset($_POST['Middle_Name'])      && isset($_POST['Last_Name'])
+        }
 
-        && isset($_POST['Image'])           && isset($_POST['Sex'])              && isset($_POST['Dob'])
+    }else{
+        echo 'Something is empty.';
+    }
+
+    }elseif(isset($_POST['First_Name'])    && isset($_POST['Middle_Name'])      && isset($_POST['Last_Name'])
+
+        && isset($_POST['Image_Chosen'])    && isset($_POST['Sex'])              && isset($_POST['Dob'])
 
         && isset($_POST['Personal_Contact'])&& isset($_POST['Father_Name'])      && isset($_POST['Mother_Name'])
 
@@ -166,7 +196,7 @@ if(!logged()){
 
         && isset($_POST['10th_School'])     && isset($_POST['12th_School'])      && isset($_POST['10th_Percent'])
 
-        && isset($_POST['12th_Percent'])    && isset($_POST['Username'])            && isset($_POST['Password'])
+        && isset($_POST['12th_Percent'])    && isset($_POST['Username'])         && isset($_POST['Password'])
 
         && isset($_POST['Confirm_Password'])&& isset($_POST['Cur_Address'])      && isset($_POST['Cur_Area_Colony'])
 
@@ -176,13 +206,15 @@ if(!logged()){
 
         && isset($_POST['Per_State'])       && isset($_POST['Per_Zip'])          && isset($_POST['Submit']))    {
 
+        echo 'not same as current address';
+
         $First_Name = $_POST['First_Name'];
 
         $Middle_Name = $_POST['Middle_Name'];
 
         $Last_Name = $_POST['Last_Name'];
 
-        $Image = $_POST['Image'];
+        $Image_Chosen = $_POST['Image_Chosen'];
 
         $Sex = $_POST['Sex'];
 
@@ -243,47 +275,54 @@ if(!logged()){
 
         $Submit = $_POST['Submit'];
 
-        $Same_As_Cur_Address = $_POST['Same_As_Cur_Address'];
 
-        if(!empty($First_Name)         && !empty($Middle_Name)      && !empty($Last_Name)        && !empty($Image)
+        if( !empty($First_Name)         && !empty($Middle_Name)      && !empty($Last_Name)        && !empty($Image_Chosen)
 
-            && !empty($Sex)            && !empty($Dob)              && !empty($Personal_Contact) && !empty($Father_Name)
+            && !empty($Sex)             && !empty($Dob)              && !empty($Personal_Contact) && !empty($Father_Name)
 
-            && !empty($Mother_Name)    && !empty($Father_Contact)   && !empty($Mother_Contact)   && !empty($Branch)
+            && !empty($Mother_Name)     && !empty($Father_Contact)   && !empty($Mother_Contact)   && !empty($Branch)
 
-            && !empty($Stream)         && !empty($_10th_Board)      && !empty($_12th_Board)      && !empty($_10th_School)
+            && !empty($Stream)          && !empty($_10th_Board)      && !empty($_12th_Board)      && !empty($_10th_School)
 
-            && !empty($_12th_School)   && !empty($_10th_Percent)    && !empty($_12th_Percent)    && !empty($Username)
+            && !empty($_12th_School)    && !empty($_10th_Percent)    && !empty($_12th_Percent)    && !empty($Username)
 
-            && !empty($Password)       && !empty($Confirm_Password) && !empty($Cur_Address)      && !empty($Cur_Area_Colony)
+            && !empty($Password)        && !empty($Confirm_Password) && !empty($Cur_Address)      && !empty($Cur_Area_Colony)
 
-            && !empty($Cur_City)       && !empty($Cur_State)        && !empty($Cur_Zip)          && !empty($Per_Address)
+            && !empty($Cur_City)        && !empty($Cur_State)        && !empty($Cur_Zip)          && !empty($Per_Address)
 
-            && !empty($Per_Area_Colony)&& !empty($Per_City)         && !empty($Per_State)        && !empty($Per_Zip)
+            && !empty($Per_Area_Colony) && !empty($Per_City)         && !empty($Per_State)        && !empty($Per_Zip)){
 
-            && !empty($Submit)){
+            //echo 'not emptyyy';
 
             if($Password != $Confirm_Password){
                 echo 'Passwords do not match';
-            }      //if over
+            }
+
             else{
+                //echo 'passwords matched';
+
                 $Confirm_Password_Hash = md5($Confirm_Password);
 
                 $query = "SELECT username FROM student_data WHERE username='".$Username."'";
 
                 if($query_run = mysqli_query($conn,$query)){
 
+                    //echo 'username exists name further';
+
                     $query_rows = mysqli_num_rows($query_run);
 
                     if($query_rows >= 1){
-                        echo 'Username'.$Username.'already exists.';
+                        echo 'Username '.$Username.' already exists.';
                     }
                     else{
-                        $query = "INSERT INTO student_details VALUES (''      ,'".mysqli_real_escape_string($conn,$First_Name)."'
+
+                        echo 'fdsfkjasflf';
+
+                        $query = "INSERT INTO student_data VALUES ('','".mysqli_real_escape_string($conn,$First_Name)."'
                         
                         ,'".mysqli_real_escape_string($conn,$Middle_Name)."'    ,'".mysqli_real_escape_string($conn,$Last_Name)."'
                         
-                        ,'".mysqli_real_escape_string($conn,$Image)."','".mysqli_real_escape_string($conn,$Sex)."'
+                        ,'".mysqli_real_escape_string($conn,$Image_Chosen)."','".mysqli_real_escape_string($conn,$Sex)."'
                         
                         ,'".mysqli_real_escape_string($conn,$Dob)."','".mysqli_real_escape_string($conn,$Personal_Contact)."'
                         
@@ -311,18 +350,36 @@ if(!logged()){
                         
                         ,'".mysqli_real_escape_string($conn,$Per_State)."','".mysqli_real_escape_string($conn,$Per_Zip)."')";
 
+                        global $conn;
 
+                        if($query_run=mysqli_query($conn,$query)){
 
+                            echo 'data insertion here';
+
+                            /*header('Location : view_status.php');*/
+
+                        }else{
+
+                            //die('error is '.mysqli_error($conn));
+
+                            echo 'We couldn\'t register you at the moment.Please try again later.';
+
+                        }
                     }       //else over
-                }      //if over
+
+                }else{
+                    echo 'query not able to run';
+                }
+
             }       //else over
 
-        }else
-            echo 'Something is empty.';
+        }
 
-    }else
-        echo 'Enter data into all fields.';
+    }else {
+        echo '<br><strong>Enter data into all fields.</strong>';
+    }
 
-} else echo 'You\'re Logged In';
+//} else
+  //  echo 'You\'re Logged In';
 
 ?>

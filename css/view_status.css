@@ -1,0 +1,116 @@
+body {
+    position: relative;
+}
+/*#00bcd4 #009688 ffc79b ffe6f2 00ceff 96ceff d3ceff #cbeafb #3eb0ef box-sizing:inherit text-shadow:none margin 0 auto display methods */
+.navbar-nav > li > a {
+    font-size: 10px !important;
+    padding-top:5px !important;
+    padding-bottom:5px !important;
+    color: #d3ceff;
+}
+.navbar-brand{
+    color: #d3ceff;
+}
+.navbar {
+    /*max-height: 15px !important;*/
+    min-height: 30px !important;
+    /*background-color: #009688 ;*/
+    /*color: #d3ceff !important;*/
+}
+.navbar-brand {
+    padding-bottom:5px !important;
+    padding-top:5px !important;
+    height: 30px !important;
+    font-size: 15px !important;
+}
+.navbar-brand:hover{
+    background-color: #009688 !important;
+    font-size: 20px !important;
+    color: white;
+}
+.navbar-nav li a:hover{
+    background-color: #009688 !important;
+    color: white;
+}
+
+
+.carousel-inner > .item {height: 102vh;}
+.carousel-inner > .item > img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.carousel-image{
+    height: 700px !important;
+    width: 100% !important;
+}
+
+.admission_button{
+    opacity: 0.5;
+    border: 2px dashed grey;
+    color:black;
+    margin-top: -440px;
+    padding: 15px;
+    font-size: 20px;
+}
+.admission_button:hover{
+    opacity: 0.8;
+    color: green;
+}
+.admission_quote{
+    font-size: 13px !important;
+    color: purple;
+    margin-bottom: 10px;
+}
+
+.img{
+    padding-right: 10px;
+    padding-left: 10px;
+    /*border-right: 1px solid grey;*/
+    /*border-left:  1px solid grey;*/
+    height: 200px;
+    width: 150px;
+}
+.carousel-control.left,
+.carousel-control.right {
+    background-image: none;
+}
+.svg_images{
+    /*border: 1px solid black;*/
+    padding-top: -20px;
+}
+
+#gallery {
+    /*border: 1px solid black;*/
+    padding-top: 30px;
+    height: 500px;
+    color: #fff;
+    background-color: #1E88E5;
+    height: 510px;
+}
+
+#contact_us {
+    padding-top: 50px;
+    height:500px;
+    color: #fff;
+    background-color: #673ab7;
+}
+#about {
+    padding-top:50px;
+    height:500px;
+    color: #fff;
+    background-color: #ff9800;
+}
+/*--------footer-------*/
+
+
+.fa:hover{
+    text-decoration: none;
+    opacity: 0.7;
+    transition-delay: 10ms;
+    font-size: 35px;
+    transition-timing-function: ease-in-out;
+}

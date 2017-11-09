@@ -11,8 +11,9 @@ $mysqli_host = 'localhost';
 $mysqli_user = 'root';
 $mysqli_password = '';
 $mysqli_database = 'university_admission';
+$conn = NULL;
 if($conn = mysqli_connect($mysqli_host,$mysqli_user,$mysqli_password,$mysqli_database)){
-//    echo 'Connected';
+    //echo 'Connected';
 }else
     die($error);
 ?>
