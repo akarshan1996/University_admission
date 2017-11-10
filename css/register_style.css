@@ -35,7 +35,7 @@ body{
 /*--------footer-------*/
 .footer-dark{
     margin-left: -100px;
-    background-color: #242729;
+    background-color: lightsteelblue;/*#242729*/
 }
 .page-footer{
     position: fixed;
@@ -43,7 +43,6 @@ body{
     right: 0;
     left: 0;
 }
-
 .fa:hover{
     text-decoration: none;
     opacity: 0.7;

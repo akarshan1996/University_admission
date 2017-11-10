@@ -5,11 +5,10 @@
  * Date: 16/10/17
  * Time: 2:58 AM
  */
-session_start();
 
 function logged(){
-    if(isset($_SESSION['user_id'])){
-        if(!empty($_SESSION['user_id'])){
+    if(isset($_SESSION['username'])){
+        if(!empty($_SESSION['username'])){
             return true;
         }
         else

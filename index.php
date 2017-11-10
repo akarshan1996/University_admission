@@ -14,7 +14,14 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-<?php require_once 'header.php'; ?>
+
+<?php require_once 'header.php';
+
+/*if($_SESSION['user_role'] == 'admin'){
+    echo "<script>window.location.href='index.php';</script>";
+}*/
+
+?>
 
 <div class="container-fluid">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">

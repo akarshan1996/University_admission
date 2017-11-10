@@ -38,7 +38,7 @@
       <div class="form-group col-md-3">
           <div style="margin-bottom:-20px; margin-left:80px; margin-top: -10px; width: 180px; height: 155px;">
               <input type="image" class="form-control-file" src="images/passport.jpeg" style="margin-bottom: 4px; width: 110px; height:120px;" name="Show_Image" alt="Submit">
-              <input type="file" class="form-control-file"  accept="image/*" id="exampleFormControlFile1" name="Image_Chosen" value="fileupload" required></input>
+              <input type="file" class="form-control-file"  accept="image/*" id="exampleFormControlFile1" name="Image_Chosen" required></input>
           </div>
       </div>
     </div>
@@ -156,7 +156,8 @@
       </div>
     </div>
   </fieldset>
-  <fieldset>
+
+  <fieldset id="Current_Address">
     <legend>Current Address</legend>
     <div class="form-row">
       <div class="form-group col-md-12">
@@ -217,11 +218,10 @@
     </div>
   </fieldset>
 
-  <fieldset>
-    <legend>Permanent Address</legend>
-
     <label><input type="checkbox" name="Same_As_Cur_Address"> Same as Current Address</input></label>
 
+  <fieldset id="Permanent_Address">
+    <legend>Permanent Address</legend>
       <div class="form-row">
       <div class="form-group col-md-12">
         <label for="inputPer_Address" class="col-form-label">Permanent Address</label>
@@ -282,7 +282,7 @@
   </fieldset>
 
   <div class="form-group text-center">
-    <button type="Submit" class="btn btn-info" style="padding:10px 20px;" name="Submit">Submit</button>
+    <button  class="btn btn-info" style="padding:10px 20px;" name="Submit">Submit</button>
   </div>
 
 </form>
@@ -292,6 +292,10 @@
 <?php require_once 'footer.php'; ?>
 
 <script>
+
+    /*var disappear_permanent=document.getElementById('Permanent_Address');
+    disappear_permanent.addClass('hidden');*/
+
 
     function check_v_pass(field, output) {
         pass_buf_value = document.getElementById('Password').value;
