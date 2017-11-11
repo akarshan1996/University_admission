@@ -36,7 +36,7 @@ function uploadImage($imgUrl){
 //if(!logged()){
     if(isset($_POST['First_Name'])          && isset($_POST['Middle_Name'])      && isset($_POST['Last_Name'])
 
-    && isset($_POST['Image_Chosen'])    && isset($_POST['Sex'])              && isset($_POST['Dob'])
+        && isset($_POST['Sex'])              && isset($_POST['Dob'])
 
     && isset($_POST['Personal_Contact'])&& isset($_POST['Father_Name'])      && isset($_POST['Mother_Name'])
 
@@ -65,6 +65,7 @@ function uploadImage($imgUrl){
     $Last_Name = $_POST['Last_Name'];
 
     $Image_Chosen = uploadImage("Image_Chosen");
+
     echo "<script>window.alert('$Image_Chosen');</script>";
 
     $Sex = $_POST['Sex'];
@@ -118,7 +119,7 @@ function uploadImage($imgUrl){
 
     if( !empty($First_Name)         && !empty($Middle_Name)      && !empty($Last_Name)
 
-        /*&& !empty($Image_Chosen)*/    && !empty($Sex)              && !empty($Dob)              && !empty($Personal_Contact)
+        && !empty($Sex)              && !empty($Dob)              && !empty($Personal_Contact)
 
         && !empty($Father_Name)     && !empty($Mother_Name)     && !empty($Father_Contact)   && !empty($Mother_Contact)
 
@@ -143,8 +144,6 @@ function uploadImage($imgUrl){
             $query = "SELECT username FROM student_data WHERE username='" . $Username . "'";
 
             if ($query_run = mysqli_query($conn, $query)) {
-
-                echo ' curr username exists name further  ';
 
                 $query_rows = mysqli_num_rows($query_run);
 
@@ -176,7 +175,7 @@ function uploadImage($imgUrl){
                         
                         ,'" . mysqli_real_escape_string($conn, $_10th_Percent) . "','" . mysqli_real_escape_string($conn, $_12th_Percent) . "'
                         
-                        ,'" . mysqli_real_escape_string($conn, $Username) . "','" . mysqli_real_escape_string($conn, $Confirm_Password) . "'
+                        ,'" . mysqli_real_escape_string($conn, $Username) . "','" . mysqli_real_escape_string($conn, $Confirm_Password_Hash) . "'
                         
                         ,'" . mysqli_real_escape_string($conn, $Cur_Address) . "','" . mysqli_real_escape_string($conn, $Cur_Area_Colony) . "'
                         
@@ -192,29 +191,24 @@ function uploadImage($imgUrl){
 
                     if ($query_run = mysqli_query($conn, $query)) {
 
-                        echo "<script>window.location.href='view_status.php';</script>";
+                        echo "<script>window.alert('Successfully Registered');</script>";
+                        echo "<script>window.location.href='index.php';</script>";
 
                     } else {
-
                         echo 'We couldn\'t register at the moment.Please try again later.';
-
                     }
-
                 }       //else over
-
             } else {
                 echo 'query not able to run';
             }
-
         }
-
     }else{
         echo 'Something is empty.';
     }
 
     }elseif(isset($_POST['First_Name'])    && isset($_POST['Middle_Name'])      && isset($_POST['Last_Name'])
 
-        && isset($_POST['Image_Chosen'])    && isset($_POST['Sex'])              && isset($_POST['Dob'])
+        && isset($_POST['Sex'])              && isset($_POST['Dob'])
 
         && isset($_POST['Personal_Contact'])&& isset($_POST['Father_Name'])      && isset($_POST['Mother_Name'])
 
@@ -308,7 +302,7 @@ function uploadImage($imgUrl){
 
         if( !empty($First_Name)         && !empty($Middle_Name)      && !empty($Last_Name)
 
-            && !empty($Image_Chosen)    && !empty($Sex)             && !empty($Dob)              && !empty($Personal_Contact)
+            && !empty($Sex)             && !empty($Dob)              && !empty($Personal_Contact)
 
             && !empty($Father_Name)     && !empty($Mother_Name)     && !empty($Father_Contact)   && !empty($Mother_Contact)
 
@@ -324,22 +318,22 @@ function uploadImage($imgUrl){
 
             && !empty($Per_Zip)){
 
-            //echo 'not emptyyy';
+            echo 'permanent not empty';
 
             if($Password != $Confirm_Password){
                 echo 'Passwords do not match';
             }
 
             else{
-                //echo 'passwords matched';
+                echo 'passwords matched';
 
-                $Confirm_Password_Hash = md5($Confirm_Password);
+                $Confirm_Password_Hash = md5($Confirm_Password_Hash);
 
                 $query = "SELECT username FROM student_data WHERE username='".$Username."'";
 
                 if($query_run = mysqli_query($conn,$query)){
 
-                    //echo 'username exists name further';
+                    echo 'username exists name further';
 
                     $query_rows = mysqli_num_rows($query_run);
 
@@ -347,15 +341,13 @@ function uploadImage($imgUrl){
                         echo 'Username '.$Username.' already exists.';
                     }
                     else{
-
-
                         $query = "INSERT INTO student_data VALUES ('".$User_role."',''
 
                         ,'".mysqli_real_escape_string($conn,$First_Name)."'
                         
-                        ,'".mysqli_real_escape_string($conn,$Middle_Name)."'    ,'".mysqli_real_escape_string($conn,$Last_Name)."'
+                        ,'".mysqli_real_escape_string($conn,$Middle_Name)."','".mysqli_real_escape_string($conn,$Last_Name)."'
                         
-                        ,'".$Image_Chosen."'                                    ,'".mysqli_real_escape_string($conn,$Sex)."'
+                        ,'"              .$Image_Chosen.                  "','".mysqli_real_escape_string($conn,$Sex)."'
                         
                         ,'".mysqli_real_escape_string($conn,$Dob)."','".mysqli_real_escape_string($conn,$Personal_Contact)."'
                         
@@ -371,7 +363,7 @@ function uploadImage($imgUrl){
                         
                         ,'".mysqli_real_escape_string($conn,$_10th_Percent)."','".mysqli_real_escape_string($conn,$_12th_Percent)."'
                         
-                        ,'".mysqli_real_escape_string($conn,$Username)."','".mysqli_real_escape_string($conn,$Confirm_Password)."'
+                        ,'".mysqli_real_escape_string($conn,$Username)."','".mysqli_real_escape_string($conn,$Confirm_Password_Hash)."'
                         
                         ,'".mysqli_real_escape_string($conn,$Cur_Address)."','".mysqli_real_escape_string($conn,$Cur_Area_Colony)."'
                         
@@ -387,7 +379,8 @@ function uploadImage($imgUrl){
 
                         if($query_run=mysqli_query($conn,$query)){
 
-                            echo "<script>window.;</script>";
+                            echo "<script>window.alert('Successfully Registered');</script>";
+                            echo "<script>window.location.href='index.php';</script>";
 
                         }else{
 
@@ -405,7 +398,7 @@ function uploadImage($imgUrl){
         }
 
     }else {
-        echo '<br><strong>Enter data into all fields.</strong>';
+        //echo '<br><strong>Enter data into all fields.</strong>';
     }
 
 //} else

@@ -4,6 +4,7 @@
     var http_referer = '<?php echo $_SERVER['HTTP_REFERER'] ?>';
     var request_uri = '<?php echo $_SERVER['REQUEST_URI'] ?>';
 </script>
+
 <?php echo "<nav class='navbar navbar-default navbar-fixed-top'>
                 <div class='container-fluid'>
                     <div class='navbar-header'>
@@ -18,11 +19,29 @@
    <div class='collapse navbar-collapse' id='myNavbar'>
    <ul class='nav navbar-nav navbar-right'>";
 
+        if(isset($_SESSION['user_role']) && ($_SESSION['user_role']=='admin')){
+            echo "<li><a href='../index.php#myCarousel'><span class='glyphicon glyphicon-home'></span> Home</a></li>
+                  <li><a href='../index.php#contact_us'><span class='glyphicon glyphicon-penci'></span> Contact Us</a></li>";
+
+            if(isset($_SESSION['user_name'])){
+                echo "<li><a href='../logout.php'><span class='glyphicon glyphicon-log-out'></span> Log Out, <b>".$_SESSION['first_name'] . "</b></a></li>
+                      <li><a href='../view_status.php'><span class='glyphicon glyphicon-stats'></span> View Status</a></li>";
+
+                //echo " <script>window.alert(\"....\"+request_uri); </script>";
+                //echo "<script> var x = $(location).attr('href'); if(x == 'index.php'){ window.alert('Yes'+'$x');} else { window.alert('No'+'$x');} </script>";
+
+            }else {
+              echo "<li><a href='#myModal' data-toggle='modal'><span class='glyphicon glyphicon-log-in'></span> Log In</a></li>
+                    <li><a href='register.php'><span class='glyphicon glyphicon-user'></span> Register</a></li>";
+          }
+
+        }elseif( (request_uri == "/php/university_admission/admin/admin_view.php") && (isset($_SESSION['user_role']) && ($_SESSION['user_role']=='admin'))) {
+            echo " <script>window.alert('hello this is elseif'); </script>";
             echo "<li><a href='index.php#myCarousel'><span class='glyphicon glyphicon-home'></span> Home</a></li>
                   <li><a href='index.php#contact_us'><span class='glyphicon glyphicon-penci'></span> Contact Us</a></li>";
 
-            if (isset($_SESSION['user_name']) && !empty($_SESSION['user_name'])) {
-                echo "<li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span> Log Out, <b>" .$_SESSION['first_name'] ."</b></a></li>
+            if (isset($_SESSION['user_name'])) {
+                echo "<li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span> Log Out, <b>" . $_SESSION['first_name'] . "</b></a></li>
                     <li><a href='view_status.php'><span class='glyphicon glyphicon-stats'></span> View Status</a></li>";
 
             } else {
@@ -30,6 +49,7 @@
                     <li><a href='register.php'><span class='glyphicon glyphicon-user'></span> Register</a></li>";
             }
 
+        }
 
         echo"</ul>
       </div>

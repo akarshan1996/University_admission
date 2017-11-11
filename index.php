@@ -15,13 +15,7 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<?php require_once 'header.php';
-
-/*if($_SESSION['user_role'] == 'admin'){
-    echo "<script>window.location.href='index.php';</script>";
-}*/
-
-?>
+<?php require_once 'header.php'; ?>
 
 <div class="container-fluid">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -66,6 +60,8 @@
     </a>
   </div>
 </div>
+
+
 
 <div class="container-fluid svg_images">
   <div class="row">
@@ -148,7 +144,7 @@
 <script src="js/blueimp-gallery.min.js"></script>
 <script>
 var line=document.getElementById("line");
-$("#line").css("padding-left", 20).animate({width: "90%"}, 2300);
+$("#line").css("padding-left", 120).animate({width: "100%"}, 2000);
 
 blueimp.Gallery(
     document.getElementById('links').getElementsByTagName('a'),

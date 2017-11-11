@@ -11,6 +11,21 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9CIiUxwau0dS8VzAc1X_bTv7kLRDP0mk&callback=myMap"></script>-->
+<script>
+    var x;
+    function selectBranch(branch) {
+        x = document.getElementById("inputBranch").options[document.getElementById("inputBranch").selectedIndex].value;
+        var XMLhttp = new XMLHttpRequest();
+        XMLhttp.onreadystatechange = function () {
+            if(XMLhttp.readyState==4 && XMLhttp.status==200){
+                document.getElementById('Stream').innerHTML=XMLhttp.responseText;
+            }
+        }
+        XMLhttp.open('GET','admin/B.Tech_Streams.php?branch='+x,true);
+        XMLhttp.send();
+    }
+</script>
+
 </head>
 
 <?php require_once 'register_data.php'; ?>
@@ -19,7 +34,7 @@
 
 <?php require_once 'header.php'; ?>
 
-<form style="margin-top:100px;" name="form1"  method="POST">
+<form style="margin-top:100px;" name="form1"  method="POST" enctype="multipart/form-data">
   <fieldset>
     <legend>Personal Details</legend>
     <div class="form-row">
@@ -37,8 +52,9 @@
       </div>
       <div class="form-group col-md-3">
           <div style="margin-bottom:-20px; margin-left:80px; margin-top: -10px; width: 180px; height: 155px;">
-              <input type="image" class="form-control-file" src="images/passport.jpeg" style="margin-bottom: 4px; width: 110px; height:120px;" name="Show_Image" alt="Submit">
-              <input type="file" class="form-control-file"  accept="image/*" id="exampleFormControlFile1" name="Image_Chosen" required></input>
+              <!-- <input type="image" class="form-control-file" src="images/passport.jpeg" style="margin-bottom: 4px; width: 110px; height:120px;" name="Show_Image" alt="Submit"> -->
+
+              <input type="file" class="form-control-file" id="exampleFormControlFile1" name="Image_Chosen" required>
           </div>
       </div>
     </div>
@@ -88,12 +104,26 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputBranch4" class="col-form-label">Branch</label>
-        <input type="text" class="form-control" id="inputBranch4" placeholder="Branch" name="Branch" required>
+
+        <!--<input type="text" class="form-control" id="inputBranch4" placeholder="Branch" name="Branch" required>-->
+          <select id="inputBranch" class="form-control" id="inputBranch4" name="Branch" placeholder="Branch" onchange="selectBranch(this);" required>
+              <option >Choose a Branch</option>
+              <option>B.Tech</option>
+              <option>M.Tech</option>
+              <option>B.A</option>
+              <option>B.Design</option>
+              <option>MBA</option>
+              <option>B.Sc</option>
+              <option>B.Com</option>
+          </select>
       </div>
-      <div class="form-group col-md-6">
-        <label for="inputStream4" class="col-form-label">Stream</label>
-        <input type="text" class="form-control" id="inputStream4" placeholder="Stream"name="Stream" required>
+
+
+      <div class="form-group col-md-6" id="Stream">
+        <!--<label for="inputStream4" class="col-form-label">Stream</label>
+          <input type="text" class="form-control" id="inputStream4" placeholder="Stream" name="Stream" required>-->
       </div>
+
     </div>
   </fieldset>
 

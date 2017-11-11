@@ -90,8 +90,11 @@ $query_rows = mysqli_fetch_assoc($query_run);
                             </ul>
                         </div>
                         <div class="col-md-4 col-sm-6 col-xs-12">
-                            <p>Student</p>
-                            <?php
+                            <?php if($_SESSION['user_role']=='admin'){
+                                echo '<p>Admin</p>';
+                            } else  {
+                                echo '<p>Student</p>';
+                            }
                             echo "
                                 <ul>
                                 <li><span>$query_rows[first_name] $query_rows[middle_name] $query_rows[last_name]</span></li>
